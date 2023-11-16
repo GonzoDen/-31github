@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for django-girls-trial-rough-violet-2147-purple-sky-6366 on 2023-11-16T13:22:48+06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "django-girls-trial-rough-violet-2147-purple-sky-6366"
+primary_region = "ams"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[build]
+  dockerfile = "Dockerfile"
+  ignorefile = ".dockerignore"
+
+[env]
+  PORT = "8000"
+
+[processes]
+  web = "gunicorn -w 2 -b :8000 django_girls_tutorial.wsgi"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["web"]
