@@ -13,6 +13,6 @@ async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
 
-@app.get("/healthcheck")
-def read_root():
-    return {"status": "ok"}
+@app.get("/qa_bot")
+def display_message():
+    return {"message": "ok"}
